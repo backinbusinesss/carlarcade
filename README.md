@@ -76,3 +76,9 @@ Le pull request vengono solo controllate, non pubblicate.
 ---
 
 Un progetto **Carlhost**.
+
+## Conversioni e statistiche
+
+- **Bottoni principali**: aprono l'app web (parte subito); nella pagina dell'app il download per il dispositivo del visitatore è evidenziato come "Consigliato per te".
+- **UTM**: i link verso app e siti ufficiali hanno `utm_source=carlarcade&utm_medium=referral&utm_campaign=<id-app>`, così nelle statistiche di ogni app si vede il traffico che arriva da qui. Si configura in `assets/js/config.js`.
+- **Eventi di click** (`Apri app`, `Download`, `Avvisami`, con app, tipo di link e posizione): partono da soli verso Plausible, GA4 o Google Tag Manager appena uno dei loro script viene aggiunto nell'`<head>` delle pagine. Senza analytics installato non succede nulla.

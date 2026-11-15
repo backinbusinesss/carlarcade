@@ -4,9 +4,11 @@ import { SITE, LINK_TYPES } from "../config.js";
 import {
   renderShell, renderFooter, appCard, statusBadge, platformChips, observeReveal,
   esc, safeUrl, brandStyle, linkButton, linkIcon, appVisual, ICONS,
+  primaryCta, bestLink, detectPlatform, outbound, trustRow, faqList, stickyBar, initTracking,
 } from "../ui.js";
 
 renderShell("apps");
+initTracking();
 
 const root = document.getElementById("app-root");
 const id = new URLSearchParams(location.search).get("id");
@@ -24,6 +26,11 @@ try {
     root.className = "app-page";
     root.setAttribute("style", brandStyle(app));
     root.innerHTML = view(app, catalog);
+    addStructuredData(app);
+    if (bestLink(app)) {
+      const bar = `<img class="sticky-cta__icon" src="${safeUrl(app.icon)}" alt="" width="32" height="32"><span class="sticky-cta__label">${esc(app.name)}<small>Gratis</small></span>${primaryCta(app, { size: "btn-sm", where: "sticky" })}`;
+      stickyBar(`<span class="sticky-cta__app" style="${brandStyle(app)}">${bar}</span>`);
+    }
     observeReveal();
   }
 } catch (err) {
@@ -32,32 +39,61 @@ try {
   root.innerHTML = `<div class="container"><p class="empty" style="margin-top:64px">L'app non si è caricata. Ricarica la pagina.</p></div>`;
 }
 
+/** Dati strutturati per Google: SoftwareApplication gratuita. */
+function addStructuredData(app) {
+  const os = { web: "Web", android: "Android", ios: "iOS", windows: "Windows", mac: "macOS", linux: "Linux" };
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: app.name,
+    description: app.description,
+    applicationCategory: app.category === "studio" ? "EducationalApplication" : "GameApplication",
+    operatingSystem: (app.platforms ?? []).map((p) => os[p] ?? p).join(", "),
+    offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+    url: app.links?.site ?? location.href,
+    image: new URL(app.cover ?? app.icon, location.href).href,
+    publisher: { "@type": "Organization", name: SITE.parent.name, url: SITE.parent.url },
+  };
+  const s = document.createElement("script");
+  s.type = "application/ld+json";
+  s.textContent = JSON.stringify(data);
+  document.head.appendChild(s);
+}
+
 function heroActions(app) {
   const l = app.links ?? {};
-  if (!Object.keys(l).length) return `<span class="btn btn-app btn-lg" aria-disabled="true">In arrivo</span>`;
-  const out = [];
-  if (l.play) out.push(linkButton("play", l.play, "app", "btn-lg"));
-  if (l.site) out.push(linkButton("site", l.site, out.length ? "ghost" : "app", "btn-lg"));
-  if (!out.length) {
-    const [t, u] = Object.entries(l)[0];
-    out.push(linkButton(t, u, "app", "btn-lg"));
+  if (!Object.keys(l).length) {
+    return `<a class="btn btn-app btn-lg" href="mailto:${SITE.contactEmail}?subject=${encodeURIComponent(`Avvisami quando esce ${app.name}`)}" data-track="Avvisami" data-app="${esc(app.id)}">${esc(app.cta ?? "Avvisami al lancio")}</a>`;
   }
+  const best = bestLink(app);
+  const out = [primaryCta(app, { where: "hero" })];
+  // Secondo bottone: il sito ufficiale, o l'app web se il primo era un download
+  if (best.type !== "play" && l.play) out.push(linkButton("play", l.play, "ghost", "btn-lg", { app, where: "hero" }));
+  else if (best.type !== "site" && l.site) out.push(linkButton("site", l.site, "ghost", "btn-lg", { app, where: "hero" }));
   return out.join("");
 }
 
 function downloads(app) {
-  const entries = Object.entries(app.links ?? {});
+  // Ordine: app web, download nativi, sito ufficiale per ultimo
+  const rank = (t) => (t === "play" ? 0 : t === "site" ? 2 : 1);
+  const entries = Object.entries(app.links ?? {}).sort(([a], [b]) => rank(a) - rank(b));
   if (!entries.length) return "";
+  const mine = detectPlatform();
+  const best = bestLink(app, mine, { preferNative: true });
   return `
-  <section class="section" style="padding-top:0">
+  <section class="section section--tight" id="scarica">
     <div class="container">
-      <div class="section__head"><div><p class="eyebrow">Dove trovarla</p><h2 class="section__title">Usala dove vuoi.</h2></div></div>
+      <div class="section__head"><div><p class="eyebrow">Dove trovarla</p><h2 class="section__title">Usala dove vuoi.</h2></div>
+        <p class="section__lead">Ti abbiamo evidenziato la versione migliore per il dispositivo che stai usando.</p></div>
       <div class="downloads">
         ${entries.map(([type, url]) => {
-          const t = LINK_TYPES[type] ?? { short: type, note: "" };
-          return `<a class="download reveal" href="${safeUrl(url)}" target="_blank" rel="noopener">
+          const t = LINK_TYPES[type] ?? { short: type, note: "", kind: "download" };
+          const rec = best && best.type === type;
+          return `<a class="download ${rec ? "download--rec" : ""} reveal" href="${safeUrl(outbound(url, type, app.id))}" target="_blank" rel="noopener"
+              data-track="${t.kind === "download" ? "Download" : "Apri app"}" data-app="${esc(app.id)}" data-link="${esc(type)}" data-where="downloads">
             <span class="download__ico">${linkIcon(type)}</span>
-            <span><strong>${esc(t.short)}</strong><span>${esc(t.note)}</span></span>
+            <span class="download__txt"><strong>${esc(t.short)}</strong><span>${esc(t.note)}</span></span>
+            ${rec ? `<span class="download__rec">Consigliato per te</span>` : ""}
           </a>`;
         }).join("")}
       </div>
@@ -82,6 +118,7 @@ function view(app, catalog) {
           <p class="app-hero__tagline">${esc(app.tagline)}</p>
           <p class="app-hero__desc">${esc(app.description)}</p>
           <div class="app-hero__actions">${heroActions(app)}</div>
+          ${app.status === "soon" ? "" : trustRow(["Gratis", "Senza registrazione", ...(app.platforms ?? []).length > 2 ? ["Su tutti i dispositivi"] : []])}
           <div class="app-hero__platforms">${platformChips(app.platforms)}</div>
         </div>
         <div class="showcase__visual">${appVisual(app)}</div>
@@ -118,8 +155,26 @@ function view(app, catalog) {
 
   ${downloads(app)}
 
+  ${app.faq?.length ? `
+  <section class="section section--tight">
+    <div class="container faq-wrap">
+      <div><p class="eyebrow">Domande frequenti</p><h2 class="section__title">Su ${esc(app.name)}.</h2></div>
+      ${faqList(app.faq)}
+    </div>
+  </section>` : ""}
+
+  ${bestLink(app) ? `
+  <section class="container">
+    <div class="cta cta--app reveal">
+      <img src="${safeUrl(app.icon)}" alt="" width="72" height="72" class="cta__icon">
+      <h2>${esc(app.tagline)}</h2>
+      <p>${esc(app.name)} è gratis e parte in pochi secondi.</p>
+      <div class="cta__actions">${primaryCta(app, { where: "final" })}</div>
+    </div>
+  </section>` : ""}
+
   ${others.length ? `
-  <section class="section" style="padding-top:0">
+  <section class="section">
     <div class="container">
       <div class="section__head"><div><p class="eyebrow">CarlArcade</p><h2 class="section__title">Altre app.</h2></div>
         <a class="btn btn-ghost" href="index.html#catalogo">Tutto il catalogo ${ICONS.arrow}</a></div>

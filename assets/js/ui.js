@@ -1,5 +1,60 @@
 // Componenti condivisi: header, footer, card, showcase, mockup, icone.
-import { SITE, PLATFORM_LABELS, LINK_TYPES } from "./config.js";
+import { SITE, PLATFORM_LABELS, LINK_TYPES, TRACKING } from "./config.js";
+
+/* ---------------- Conversioni ---------------- */
+
+/** Aggiunge i parametri UTM ai link verso i siti/app (non ai file da scaricare). */
+export function outbound(url, type, appId) {
+  if (!/^https:\/\//.test(url) || !["play", "site"].includes(type)) return url;
+  try {
+    const u = new URL(url);
+    for (const [k, v] of Object.entries(TRACKING.utm)) if (!u.searchParams.has(k)) u.searchParams.set(k, v);
+    if (!u.searchParams.has("utm_campaign")) u.searchParams.set("utm_campaign", appId);
+    return u.toString();
+  } catch { return url; }
+}
+
+/** Invia un evento all'analytics installato (Plausible, GA4, GTM). Silenzioso se assente. */
+export function track(name, props = {}) {
+  try {
+    window.plausible?.(name, { props });
+    window.gtag?.("event", name, props);
+    window.dataLayer?.push({ event: name, ...props });
+  } catch { /* nessun analytics */ }
+}
+
+/** Un listener unico per tutti gli elementi con data-track="evento" data-app="id" data-link="tipo". */
+export function initTracking() {
+  document.addEventListener("click", (e) => {
+    const el = e.target.closest("[data-track]");
+    if (el) track(el.dataset.track, { app: el.dataset.app ?? "", link: el.dataset.link ?? "", where: el.dataset.where ?? "" });
+  });
+}
+
+/** Piattaforma del visitatore, per consigliare il download giusto. */
+export function detectPlatform() {
+  const ua = navigator.userAgent;
+  if (/Android/i.test(ua)) return "android";
+  if (/iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return "ios";
+  if (/Windows/i.test(ua)) return "windows";
+  if (/Macintosh/i.test(ua)) return "mac";
+  return "web";
+}
+
+/**
+ * Il link migliore per questo visitatore.
+ * Di default vince l'app web (parte subito, zero attrito); con preferNative
+ * vince il download per il suo sistema, se esiste (usato per "Consigliato per te").
+ */
+export function bestLink(app, platform = detectPlatform(), { preferNative = false } = {}) {
+  const l = app.links ?? {};
+  if (preferNative && l[platform]) return { type: platform, url: l[platform] };
+  if (l.play) return { type: "play", url: l.play };
+  if (l[platform]) return { type: platform, url: l[platform] };
+  if (l.site) return { type: "site", url: l.site };
+  const first = Object.entries(l)[0];
+  return first ? { type: first[0], url: first[1] } : null;
+}
 
 /** Escape per testo inserito in HTML. Tutti i dati di apps.json passano da qui. */
 export const esc = (s = "") =>
@@ -21,6 +76,7 @@ export const ICONS = {
   android: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48 19.44 6.3a.5.5 0 0 0-.87-.5l-1.87 3.23A11.4 11.4 0 0 0 12 8c-1.7 0-3.3.37-4.7 1.03L5.43 5.8a.5.5 0 0 0-.87.5L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>`,
   apple: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46a4.2 4.2 0 0 0-3.32-1.8c-1.4-.14-2.75.83-3.46.83-.72 0-1.81-.81-2.98-.79a4.4 4.4 0 0 0-3.72 2.27c-1.6 2.77-.41 6.86 1.14 9.1.76 1.1 1.66 2.33 2.84 2.29 1.14-.05 1.57-.74 2.95-.74s1.77.74 2.97.71c1.23-.02 2-1.11 2.75-2.22a9.6 9.6 0 0 0 1.25-2.57 3.97 3.97 0 0 1-2.38-3.62zM14.1 5.86A3.95 3.95 0 0 0 15.03 3a4 4 0 0 0-2.6 1.35 3.76 3.76 0 0 0-.95 2.77 3.3 3.3 0 0 0 2.62-1.26z"/></svg>`,
   search: svg(`<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>`),
+  check: svg(`<path d="M20 6 9 17l-5-5"/>`, 'class="i-check"'),
   code: svg(`<path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/>`),
   server: svg(`<rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/>`),
   spark: svg(`<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/>`),
@@ -80,7 +136,7 @@ export function renderFooter(apps = []) {
     : `<li><a href="index.html#catalogo">Tutte le app</a></li>`;
   const siteLinks = apps
     .filter((a) => a.links?.site)
-    .map((a) => `<li><a href="${safeUrl(a.links.site)}" target="_blank" rel="noopener">Sito ${esc(a.name)}</a></li>`)
+    .map((a) => `<li><a href="${safeUrl(outbound(a.links.site, "site", a.id))}" target="_blank" rel="noopener" data-track="Apri app" data-app="${esc(a.id)}" data-link="site" data-where="footer">Sito ${esc(a.name)}</a></li>`)
     .join("");
   footer.outerHTML = `
   <footer class="site-footer">
@@ -113,10 +169,40 @@ export const platformChips = (platforms = []) =>
 
 export const appUrl = (app) => `app.html?id=${encodeURIComponent(app.id)}`;
 
-/** Bottone per un link dell'app. variant: "app" (colore brand) | "ghost". */
-export function linkButton(type, url, variant = "ghost", size = "") {
+/** Bottone per un link dell'app, con UTM e tracking. variant: "app" (colore brand) | "ghost" | "primary". */
+export function linkButton(type, url, variant = "ghost", size = "", { app, label, where = "" } = {}) {
   const t = LINK_TYPES[type] ?? { label: type };
-  return `<a class="btn btn-${variant} ${size}" href="${safeUrl(url)}" target="_blank" rel="noopener">${linkIcon(type)}${esc(t.label)}</a>`;
+  const href = app ? outbound(url, type, app.id) : url;
+  return `<a class="btn btn-${variant} ${size}" href="${safeUrl(href)}" target="_blank" rel="noopener"
+    data-track="${t.kind === "download" ? "Download" : "Apri app"}" data-app="${esc(app?.id ?? "")}" data-link="${esc(type)}" data-where="${esc(where)}">${linkIcon(type)}${esc(label ?? t.label)}</a>`;
+}
+
+/** Bottone principale "intelligente": per l'app, sul dispositivo del visitatore. */
+export function primaryCta(app, { variant = "app", size = "btn-lg", where = "", label: forced } = {}) {
+  const best = bestLink(app);
+  if (!best) return `<span class="btn btn-${variant} ${size}" aria-disabled="true">${esc(app.cta ?? "In arrivo")}</span>`;
+  const isDownload = LINK_TYPES[best.type]?.kind === "download";
+  const label = isDownload ? LINK_TYPES[best.type].label : app.cta ?? LINK_TYPES[best.type]?.label;
+  return linkButton(best.type, best.url, variant, size, { app, label: forced ?? label, where });
+}
+
+/** Righe di rassicurazione sotto le CTA. */
+export const trustRow = (items) =>
+  `<ul class="trust">${items.map((t) => `<li>${ICONS.check}${esc(t)}</li>`).join("")}</ul>`;
+
+/** FAQ accessibile con <details>. */
+export const faqList = (faq = []) =>
+  `<div class="faq">${faq.map((f) => `<details class="faq__item"><summary>${esc(f.q)}<span aria-hidden="true">+</span></summary><p>${esc(f.a)}</p></details>`).join("")}</div>`;
+
+/** Barra fissa in basso su mobile con le CTA principali. */
+export function stickyBar(html) {
+  const bar = document.createElement("div");
+  bar.className = "sticky-cta";
+  bar.innerHTML = html;
+  document.body.appendChild(bar);
+  const toggle = () => bar.classList.toggle("is-visible", scrollY > innerHeight * 0.6 && innerHeight + scrollY < document.body.scrollHeight - 200);
+  addEventListener("scroll", toggle, { passive: true });
+  toggle();
 }
 
 /** Mockup: telefoni se ci sono screenshot, altrimenti finestra browser con la cover. */
@@ -137,7 +223,7 @@ export function appVisual(app, { phones = 2 } = {}) {
 export function appCard(app, catalog) {
   const soon = app.status === "soon";
   return `
-  <article class="app-card ${soon ? "app-card--soon" : ""} reveal" style="--c:${esc(app.color)}">
+  <article class="app-card ${soon ? "app-card--soon" : ""} reveal" style="${brandStyle(app)}">
     <div class="app-card__top">
       <img class="app-icon" src="${safeUrl(app.icon)}" alt="" width="56" height="56" loading="lazy">
       ${statusBadge(app.status, catalog.statuses)}
@@ -150,7 +236,10 @@ export function appCard(app, catalog) {
       <span class="chip">${esc(catalog.categories[app.category] ?? app.category)}</span>
       ${platformChips(app.platforms)}
     </div>
-    <div class="app-card__foot"><span>${soon ? "Scopri cosa arriva" : "Scopri l'app"}</span>${ICONS.arrow}</div>
+    <div class="app-card__foot">
+      <span>${soon ? "Scopri cosa arriva" : "Dettagli"} ${ICONS.arrow}</span>
+      ${!soon && bestLink(app) ? `<span class="app-card__quick">${primaryCta(app, { variant: "app", size: "btn-sm", where: "card" })}</span>` : ""}
+    </div>
     <a class="app-card__link" href="${appUrl(app)}" aria-label="${esc(app.name)}: dettagli"></a>
   </article>`;
 }
@@ -158,14 +247,15 @@ export function appCard(app, catalog) {
 /** Fascia grande con lo stile dell'app (usata in home). */
 export function showcase(app, i) {
   const links = app.links ?? {};
-  const primary = links.play ? linkButton("play", links.play, "app", "btn-lg") : "";
-  const site = links.site ? linkButton("site", links.site, "ghost", "btn-lg") : "";
+  const site = links.site ? linkButton("site", links.site, "ghost", "btn-lg", { app, where: "showcase" }) : "";
   const stats = (app.stats ?? []).slice(0, 4)
     .map((s) => `<div><strong>${esc(s.value)}</strong><span>${esc(s.label)}</span></div>`).join("");
+  const perks = (app.features ?? []).slice(0, 3).map((f) => (typeof f === "string" ? f : f.title));
   return `
   <article class="showcase ${i % 2 ? "showcase--flip" : ""} reveal" style="${brandStyle(app)}" id="app-${esc(app.id)}">
     <div class="showcase__grid">
       <div class="showcase__copy">
+        ${app.audience ? `<p class="showcase__audience">${esc(app.audience)}</p>` : ""}
         <div class="showcase__head">
           <img src="${safeUrl(app.icon)}" alt="" width="64" height="64">
           <h3 class="showcase__name">${esc(app.name)}</h3>
@@ -174,9 +264,10 @@ export function showcase(app, i) {
         <p class="showcase__desc">${esc(app.description)}</p>
         ${stats ? `<div class="showcase__stats">${stats}</div>` : ""}
         <div class="showcase__actions">
-          ${primary}${site}
-          <a class="showcase__more" href="${appUrl(app)}">Dettagli ${ICONS.arrow}</a>
+          ${primaryCta(app, { where: "showcase" })}${site}
         </div>
+        ${perks.length ? `<div class="showcase__perks">${trustRow(perks)}</div>` : ""}
+        <a class="showcase__more" href="${appUrl(app)}">Scopri tutto su ${esc(app.name)} ${ICONS.arrow}</a>
       </div>
       <div class="showcase__visual">${appVisual(app)}</div>
     </div>

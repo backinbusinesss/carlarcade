@@ -8,6 +8,15 @@ export const SITE = {
   dataUrl: "data/apps.json",
 };
 
+// Misurazione delle conversioni.
+// - utm: aggiunto ai link "play" e "site" verso le app, così nelle statistiche
+//   di ogni app si vede quante visite arrivano da CarlArcade.
+// - I click sui bottoni (data-track) vengono inviati a Plausible, GA4 (gtag)
+//   o Google Tag Manager (dataLayer) se uno di questi è installato nella pagina.
+export const TRACKING = {
+  utm: { utm_source: "carlarcade", utm_medium: "referral" },
+};
+
 // Etichette leggibili per le piattaforme.
 export const PLATFORM_LABELS = {
   web: "Browser",

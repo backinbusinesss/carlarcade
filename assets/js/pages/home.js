@@ -1,8 +1,12 @@
-// Home: dock icone, showcase delle app live, catalogo con filtri e ricerca.
+// Home: scelta rapida, showcase delle app live, catalogo, CTA finale e barra mobile.
 import { loadCatalog, sortApps, filterApps } from "../data.js";
-import { renderShell, renderFooter, appCard, showcase, appUrl, safeUrl, observeReveal, esc } from "../ui.js";
+import {
+  renderShell, renderFooter, appCard, showcase, primaryCta, appUrl, safeUrl,
+  observeReveal, initTracking, stickyBar, brandStyle, esc,
+} from "../ui.js";
 
 renderShell("apps");
+initTracking();
 
 const $ = (id) => document.getElementById(id);
 const state = { filter: "all", query: "" };
@@ -10,24 +14,38 @@ const state = { filter: "all", query: "" };
 try {
   const catalog = await loadCatalog();
   const apps = sortApps(catalog.apps);
+  const live = apps.filter((a) => a.status === "live");
+  const soon = apps.length - live.length;
   renderFooter(apps);
 
-  // Dock con le icone vere delle app
-  $("dock").innerHTML = apps
-    .map((a) => `<a href="${appUrl(a)}" class="${a.status === "soon" ? "is-soon" : ""}" style="--c:${esc(a.color)}">
-      <img src="${safeUrl(a.icon)}" alt="" width="84" height="84"><span>${esc(a.name)}</span></a>`)
+  $("hero-pill").innerHTML = `<span class="pill__tag">Gratis</span><span><b>${live.length} app online</b>${soon ? `, ${soon} in arrivo` : ""}</span>`;
+
+  // Hero: una riga per app live, con il bottone giusto per il dispositivo
+  $("hero-picks").innerHTML = live
+    .map((a) => `
+    <div class="pick" style="${brandStyle(a)}">
+      <a class="pick__info" href="${appUrl(a)}">
+        <img src="${safeUrl(a.icon)}" alt="" width="48" height="48">
+        <span><strong>${esc(a.name)}</strong><span>${esc(a.audience ?? a.tagline)}</span></span>
+      </a>
+      ${primaryCta(a, { size: "", where: "hero" })}
+    </div>`)
     .join("");
 
-  // Pill in alto
-  const live = apps.filter((a) => a.status === "live").length;
-  const soon = apps.length - live;
-  $("hero-pill").innerHTML = `<span class="pill__tag">Nuovo</span><span><b>${live} app online</b>${soon ? `, ${soon} in arrivo` : ""}</span>`;
+  // Showcase col brand di ogni app
+  $("showcases").innerHTML = live.filter((a) => a.featured !== false).map(showcase).join("");
 
-  // Showcase: tutte le app live (in evidenza se "featured")
-  const showcased = apps.filter((a) => a.status === "live" && a.featured !== false);
-  $("showcases").innerHTML = showcased.map(showcase).join("");
+  // CTA finale
+  $("final-ctas").innerHTML = live
+    .map((a) => `<span style="${brandStyle(a)}">${primaryCta(a, { size: "btn-lg", where: "final" })}</span>`)
+    .join("");
 
-  // Catalogo: filtri
+  // Barra fissa su mobile
+  stickyBar(`<span class="sticky-cta__label">Inizia gratis</span>` + live
+    .map((a) => `<span style="${brandStyle(a)}">${primaryCta(a, { size: "btn-sm", where: "sticky", label: a.name })}</span>`)
+    .join(""));
+
+  // Catalogo
   const usedCats = [...new Set(apps.map((a) => a.category))];
   const filters = [["all", "Tutte"], ...usedCats.map((c) => [c, catalog.categories[c] ?? c]), ["soon", catalog.statuses.soon]];
   const filtersEl = $("filters");

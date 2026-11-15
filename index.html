@@ -3,78 +3,129 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CarlArcade: le app di Carlhost, in un unico posto</title>
-  <meta name="description" content="CarlArcade raccoglie i giochi e le app di Carlhost: PatenteQuest, il quiz patente per gioco, Indovina Tutto, il quiz su tutto, e Baratto Skill in arrivo.">
+  <title>CarlArcade | App e quiz gratis: patente B, cultura generale e altro</title>
+  <meta name="description" content="Prepara l'esame della patente B con i 7.106 quiz ministeriali di PatenteQuest e sfida la tua cultura con le 4.115 domande di Indovina Tutto. Gratis, senza registrazione.">
   <meta name="theme-color" content="#09090b">
   <link rel="canonical" href="https://carlarcade.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CarlArcade">
-  <meta property="og:title" content="CarlArcade: le app di Carlhost, in un unico posto">
-  <meta property="og:description" content="Quiz, giochi e strumenti utili. Progettati, sviluppati e ospitati da Carlhost.">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:title" content="CarlArcade | App e quiz gratis">
+  <meta property="og:description" content="Quiz patente B e quiz di cultura generale. Gratis, senza registrazione, su ogni dispositivo. Un progetto Carlhost.">
   <meta property="og:url" content="https://carlarcade.com/">
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/img/apps/patentequest/home.webp">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700;800&family=JetBrains+Mono:wght@500&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
   <script type="module" src="assets/js/pages/home.js"></script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"CarlArcade","url":"https://carlarcade.com/","logo":"https://carlarcade.com/assets/img/logo.svg","parentOrganization":{"@type":"Organization","name":"Carlhost","url":"https://carlhost.com"}}
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"Organization","name":"CarlArcade","url":"https://carlarcade.com/","logo":"https://carlarcade.com/assets/img/logo.svg","parentOrganization":{"@type":"Organization","name":"Carlhost","url":"https://carlhost.com"}},
+    {"@type":"WebSite","name":"CarlArcade","url":"https://carlarcade.com/","inLanguage":"it-IT"}
+  ]}
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#app">Vai alle app</a>
+  <a class="skip-link" href="#inizia">Vai alle app</a>
   <div data-shell="header"></div>
 
   <main>
-    <!-- HERO -->
-    <section class="hero">
+    <!-- ============ HERO: scelta immediata ============ -->
+    <section class="hero hero--split">
       <div class="hero__bg" aria-hidden="true"></div>
-      <div class="container hero__inner">
-        <span class="pill" id="hero-pill"><span class="pill__tag">Nuovo</span><span>Le app di Carlhost</span></span>
-        <h1>Le app di Carlhost. <span class="muted">In un unico posto.</span></h1>
-        <p class="hero__lead">Quiz per mettersi alla prova, app per prendere la patente, strumenti per scambiarsi competenze. Gratis per iniziare, su ogni dispositivo.</p>
-        <div class="hero__actions">
-          <a class="btn btn-primary btn-lg" href="#app">Scopri le app</a>
-          <a class="btn btn-ghost btn-lg" href="#catalogo">Tutto il catalogo</a>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <span class="pill" id="hero-pill"><span class="pill__tag">Gratis</span><span>Le app di Carlhost</span></span>
+          <h1>Studia, gioca, sfida.<br><span class="muted">Gratis, da subito.</span></h1>
+          <p class="hero__lead">Passa l'esame della patente con i quiz ministeriali veri, o metti alla prova quello che sai con migliaia di domande. Nessuna registrazione: apri e inizi.</p>
+
+          <div class="picks" id="inizia" aria-label="Scegli da dove iniziare">
+            <p class="picks__label">Da dove vuoi iniziare?</p>
+            <div id="hero-picks" class="picks__list"></div>
+          </div>
+
+          <ul class="trust">
+            <li><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Gratis, nessun abbonamento</li>
+            <li><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Senza registrazione</li>
+            <li><svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Telefono, tablet e PC</li>
+          </ul>
         </div>
-        <nav class="dock" id="dock" aria-label="Le app"></nav>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero-stage">
+            <div class="hero-stage__browser browser">
+              <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">Indovina Tutto</span></div>
+              <img src="assets/img/apps/indovina-tutto/cover.png" alt="" width="1200" height="630">
+            </div>
+            <div class="hero-stage__phone phone">
+              <img src="assets/img/apps/patentequest/home.webp" alt="" width="878" height="1904">
+            </div>
+            <div class="float-card float-card--a">
+              <img src="assets/img/apps/patentequest/icon.png" alt="" width="36" height="36">
+              <span><strong>7.106 quiz</strong>ministeriali patente B</span>
+            </div>
+            <div class="float-card float-card--b">
+              <img src="assets/img/apps/indovina-tutto/icon.png" alt="" width="36" height="36">
+              <span><strong>4.115 domande</strong>in 39 categorie</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- NUMERI -->
+    <!-- ============ NUMERI ============ -->
     <section class="metrics" aria-label="CarlArcade in numeri">
       <div class="container">
-        <div class="metric"><strong>11.000+</strong><span>domande nei quiz</span></div>
-        <div class="metric"><strong>5</strong><span>piattaforme supportate</span></div>
-        <div class="metric"><strong>0 €</strong><span>per iniziare a giocare</span></div>
-        <div class="metric"><strong>100%</strong><span>sviluppato in Italia</span></div>
+        <div class="metric"><strong>11.221</strong><span>domande tra tutti i quiz</span></div>
+        <div class="metric"><strong>0 €</strong><span>per sempre, nessun abbonamento</span></div>
+        <div class="metric"><strong>5</strong><span>piattaforme: web, Android, iPhone, Windows, Mac</span></div>
+        <div class="metric"><strong>0</strong><span>registrazioni obbligatorie</span></div>
       </div>
     </section>
 
-    <!-- SHOWCASE APP LIVE (ognuna col proprio brand) -->
+    <!-- ============ APP IN EVIDENZA (col loro brand) ============ -->
     <section class="section" id="app">
       <div class="container">
         <div class="section__head">
           <div>
             <p class="eyebrow">Disponibili ora</p>
-            <h2 class="section__title">Pronte da usare.</h2>
+            <h2 class="section__title">Scegli la tua app.</h2>
           </div>
-          <p class="section__lead">Ogni app ha la sua identità e il suo sito ufficiale. Qui le trovi tutte, con un clic per aprirle.</p>
+          <p class="section__lead">Ognuna ha il suo sito ufficiale e funziona su qualsiasi dispositivo. Il bottone ti porta alla versione giusta per il tuo.</p>
         </div>
         <div id="showcases"></div>
       </div>
     </section>
 
-    <!-- CATALOGO -->
-    <section class="section" id="catalogo" style="padding-top:0">
+    <!-- ============ COME FUNZIONA ============ -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Come funziona</p>
+            <h2 class="section__title">Dal clic alla prima domanda<br>in pochi secondi.</h2>
+          </div>
+        </div>
+        <ol class="steps">
+          <li class="step reveal"><span class="step__n">1</span><h3>Scegli l'app</h3><p>Patente o cultura generale: parti da quella che ti serve oggi.</p></li>
+          <li class="step reveal"><span class="step__n">2</span><h3>Aprila dove sei</h3><p>Nel browser, senza installare nulla. Oppure scaricala su Android o Windows.</p></li>
+          <li class="step reveal"><span class="step__n">3</span><h3>Inizia a giocare</h3><p>Nessun account, nessun modulo. I progressi si salvano da soli sul dispositivo.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CATALOGO ============ -->
+    <section class="section" id="catalogo">
       <div class="container">
         <div class="section__head">
           <div>
             <p class="eyebrow">Catalogo</p>
             <h2 class="section__title">Tutte le app.</h2>
           </div>
+          <p class="section__lead">Il catalogo cresce: ogni nuova app di Carlhost arriva prima qui.</p>
         </div>
         <div class="toolbar">
           <div class="segmented" id="filters" role="group" aria-label="Filtra le app"></div>
@@ -88,43 +139,61 @@
       </div>
     </section>
 
-    <!-- STUDIO CARLHOST -->
-    <section class="section" style="padding-top:0">
+    <!-- ============ STUDIO CARLHOST ============ -->
+    <section class="section section--tight">
       <div class="container">
         <div class="section__head">
           <div>
-            <p class="eyebrow">Lo studio</p>
+            <p class="eyebrow">Perché fidarsi</p>
             <h2 class="section__title">Fatte da Carlhost.<br>Dall'idea al server.</h2>
           </div>
-          <p class="section__lead">Ogni app di CarlArcade è progettata, sviluppata e ospitata internamente. Nessun intermediario.</p>
+          <p class="section__lead">Ogni app è progettata, sviluppata e ospitata internamente. Niente intermediari, niente sorprese.</p>
         </div>
         <div class="studio">
           <div class="studio__item reveal">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>
-            <h3>Progettate con cura</h3>
-            <p>Interfacce chiare, pensate per il telefono, che si usano senza istruzioni.</p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <h3>Nessun dato richiesto</h3>
+            <p>Per giocare non serve un account. Se lo crei, è solo per salvare i progressi nel cloud.</p>
           </div>
           <div class="studio__item reveal">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
-            <h3>Su ogni dispositivo</h3>
-            <p>Browser, Android, Windows, iPhone e Mac. Molte funzionano anche offline.</p>
+            <h3>Contenuti verificati</h3>
+            <p>I quiz patente sono quelli del listato ministeriale ufficiale 2025, con le spiegazioni.</p>
           </div>
           <div class="studio__item reveal">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>
-            <h3>Ospitate da Carlhost</h3>
-            <p>Infrastruttura veloce e affidabile, aggiornamenti continui senza pensieri.</p>
+            <h3>Sempre aggiornate</h3>
+            <p>Infrastruttura Carlhost, aggiornamenti continui. Le app web si aggiornano da sole.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- ============ FAQ ============ -->
+    <section class="section section--tight" id="faq">
+      <div class="container faq-wrap">
+        <div>
+          <p class="eyebrow">Domande frequenti</p>
+          <h2 class="section__title">Tutto quello<br>che ti chiedi.</h2>
+          <p class="section__lead" style="margin-top:16px">Non trovi la risposta? Scrivi a <a href="mailto:info@carlhost.com" class="link">info@carlhost.com</a>.</p>
+        </div>
+        <div class="faq">
+          <details class="faq__item"><summary>Le app sono davvero gratis?<span aria-hidden="true">+</span></summary><p>Sì. Puoi usare PatenteQuest e Indovina Tutto gratis, senza abbonamenti e senza inserire una carta.</p></details>
+          <details class="faq__item"><summary>Devo registrarmi?<span aria-hidden="true">+</span></summary><p>No. Apri l'app e inizi subito. L'account è facoltativo e serve solo a salvare i progressi nel cloud.</p></details>
+          <details class="faq__item"><summary>Funzionano su iPhone?<span aria-hidden="true">+</span></summary><p>Sì, dal browser Safari. Puoi anche aggiungerle alla schermata Home: si aprono come un'app normale.</p></details>
+          <details class="faq__item"><summary>Posso usarle senza connessione?<span aria-hidden="true">+</span></summary><p>Indovina Tutto sì: una volta installato sul telefono funziona anche offline. Le funzioni online, come l'arena di PatenteQuest, richiedono internet.</p></details>
+          <details class="faq__item"><summary>Chi c'è dietro CarlArcade?<span aria-hidden="true">+</span></summary><p>Carlhost, che progetta, sviluppa e ospita tutte le app. Per collaborazioni o segnalazioni scrivi a info@carlhost.com.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA FINALE ============ -->
     <section class="container">
       <div class="cta reveal">
-        <p class="eyebrow">Collaboriamo</p>
-        <h2 style="margin-top:12px">Hai un'idea per un'app?</h2>
-        <p>Scrivici. Le idee migliori diventano la prossima app di CarlArcade.</p>
-        <a class="btn btn-primary btn-lg" href="mailto:info@carlhost.com">Scrivi a Carlhost</a>
+        <p class="eyebrow">Pronto?</p>
+        <h2 style="margin-top:12px">La prima domanda ti aspetta.</h2>
+        <p>Scegli l'app e inizia ora. Gratis, senza registrazione.</p>
+        <div class="cta__actions" id="final-ctas"></div>
       </div>
     </section>
   </main>

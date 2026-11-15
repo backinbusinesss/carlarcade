@@ -15,6 +15,8 @@
       "id": "patentequest",
       "name": "PatenteQuest",
       "tagline": "Prendi la patente. Giocando.",
+      "audience": "Per chi deve prendere la patente B",
+      "cta": "Inizia a studiare gratis",
       "description": "Tutti i 7.106 quiz ministeriali della patente B (listato 2025), con arene, sfide contro altri giocatori, livelli e simulazioni d'esame vere. Ogni capitolo è un livello, ogni ripasso una sfida, ogni errore una spiegazione. Gratis e senza pubblicità.",
       "category": "studio",
       "status": "live",
@@ -30,12 +32,30 @@
       "icon": "assets/img/apps/patentequest/icon.png",
       "cover": "assets/img/apps/patentequest/cover.png",
       "screens": [
-        { "src": "assets/img/apps/patentequest/home.webp", "alt": "Schermata home con preparazione all'esame e modalità di gioco" },
-        { "src": "assets/img/apps/patentequest/esame.webp", "alt": "Simulazione d'esame" },
-        { "src": "assets/img/apps/patentequest/arene.webp", "alt": "Le arene" },
-        { "src": "assets/img/apps/patentequest/sfide.webp", "alt": "Le sfide" }
+        {
+          "src": "assets/img/apps/patentequest/home.webp",
+          "alt": "Schermata home con preparazione all'esame e modalità di gioco"
+        },
+        {
+          "src": "assets/img/apps/patentequest/esame.webp",
+          "alt": "Simulazione d'esame"
+        },
+        {
+          "src": "assets/img/apps/patentequest/arene.webp",
+          "alt": "Le arene"
+        },
+        {
+          "src": "assets/img/apps/patentequest/sfide.webp",
+          "alt": "Le sfide"
+        }
       ],
-      "platforms": ["windows", "android", "ios", "mac", "web"],
+      "platforms": [
+        "windows",
+        "android",
+        "ios",
+        "mac",
+        "web"
+      ],
       "links": {
         "site": "https://patentequest-acdf10.web.app/",
         "play": "https://patentequest-acdf10.web.app/app/",
@@ -43,24 +63,74 @@
         "android": "https://github.com/backinbusinesss/patentequest-download/releases/latest/download/PatenteQuest.apk"
       },
       "stats": [
-        { "label": "Quiz ministeriali", "value": "7.106" },
-        { "label": "Capitoli d'esame", "value": "25" },
-        { "label": "Figure e segnali", "value": "409" },
-        { "label": "Medaglie", "value": "22" }
+        {
+          "label": "Quiz ministeriali",
+          "value": "7.106"
+        },
+        {
+          "label": "Capitoli d'esame",
+          "value": "25"
+        },
+        {
+          "label": "Figure e segnali",
+          "value": "409"
+        },
+        {
+          "label": "Medaglie",
+          "value": "22"
+        }
       ],
       "features": [
-        { "title": "Arena online", "text": "Sfida giocatori veri in tempo reale sulle stesse 10 domande." },
-        { "title": "Simulazione d'esame", "text": "30 domande, 20 minuti, massimo 3 errori. Come all'esame vero." },
-        { "title": "Ogni errore, spiegato", "text": "La versione corretta dal listato ufficiale e le regole collegate." },
-        { "title": "Ripasso intelligente", "text": "Le domande tornano proprio quando stai per dimenticarle." },
-        { "title": "Livelli e medaglie", "text": "XP, combo, giorni di fila e 22 medaglie da sbloccare." },
-        { "title": "Classifica mondiale", "text": "Account facoltativo, progressi salvati nel cloud." }
+        {
+          "title": "Arena online",
+          "text": "Sfida giocatori veri in tempo reale sulle stesse 10 domande."
+        },
+        {
+          "title": "Simulazione d'esame",
+          "text": "30 domande, 20 minuti, massimo 3 errori. Come all'esame vero."
+        },
+        {
+          "title": "Ogni errore, spiegato",
+          "text": "La versione corretta dal listato ufficiale e le regole collegate."
+        },
+        {
+          "title": "Ripasso intelligente",
+          "text": "Le domande tornano proprio quando stai per dimenticarle."
+        },
+        {
+          "title": "Livelli e medaglie",
+          "text": "XP, combo, giorni di fila e 22 medaglie da sbloccare."
+        },
+        {
+          "title": "Classifica mondiale",
+          "text": "Account facoltativo, progressi salvati nel cloud."
+        }
+      ],
+      "faq": [
+        {
+          "q": "PatenteQuest è davvero gratis?",
+          "a": "Sì. Tutti i quiz, le arene, le sfide e le simulazioni d'esame sono gratis. Niente abbonamenti e niente pubblicità."
+        },
+        {
+          "q": "I quiz sono quelli dell'esame vero?",
+          "a": "Sì: sono i 7.106 quiz del listato ministeriale 2025 della patente B, divisi nei 25 capitoli d'esame."
+        },
+        {
+          "q": "Funziona su iPhone e Mac?",
+          "a": "Sì, dal browser: apri l'app web e aggiungila alla schermata Home. Per Windows e Android c'è anche l'app da scaricare."
+        },
+        {
+          "q": "Devo creare un account?",
+          "a": "No. L'account è facoltativo e serve solo per salvare i progressi nel cloud e comparire nella classifica mondiale."
+        }
       ]
     },
     {
       "id": "indovina-tutto",
       "name": "Indovina Tutto",
       "tagline": "Quanto ne sai, davvero?",
+      "audience": "Per chi ama i quiz e le sfide",
+      "cta": "Gioca gratis ora",
       "description": "Il quiz su tutto: bandiere, capitali, sagome, loghi e molto altro. 39 categorie e 4.115 domande, ognuna in quattro livelli: progressivo, facile, medio e difficile. Streak, gemme, negozio e una sfida nuova ogni giorno. Si installa sul telefono e funziona anche offline.",
       "category": "quiz",
       "status": "live",
@@ -76,30 +146,84 @@
       "icon": "assets/img/apps/indovina-tutto/icon.png",
       "cover": "assets/img/apps/indovina-tutto/cover.png",
       "screens": [],
-      "platforms": ["web", "android", "ios"],
+      "platforms": [
+        "web",
+        "android",
+        "ios"
+      ],
       "links": {
         "site": "https://backinbusinesss.github.io/indovina-tutto/",
         "play": "https://backinbusinesss.github.io/indovina-tutto/app/"
       },
       "stats": [
-        { "label": "Categorie", "value": "39" },
-        { "label": "Domande", "value": "4.115" },
-        { "label": "Livelli per categoria", "value": "4" },
-        { "label": "Registrazione", "value": "No" }
+        {
+          "label": "Categorie",
+          "value": "39"
+        },
+        {
+          "label": "Domande",
+          "value": "4.115"
+        },
+        {
+          "label": "Livelli per categoria",
+          "value": "4"
+        },
+        {
+          "label": "Registrazione",
+          "value": "No"
+        }
       ],
       "features": [
-        { "title": "39 categorie", "text": "Bandiere, capitali, sagome dei paesi, loghi, e molto altro." },
-        { "title": "Quattro livelli", "text": "Progressivo, facile, medio e difficile per ogni categoria." },
-        { "title": "Sfida del giorno", "text": "Una partita nuova ogni giorno, uguale per tutti." },
-        { "title": "Streak e gemme", "text": "Gioca ogni giorno, accumula gemme e spendile nel negozio." },
-        { "title": "Funziona offline", "text": "Si installa come app sul telefono e gira anche senza rete." },
-        { "title": "Zero attrito", "text": "Nessun account: apri e giochi." }
+        {
+          "title": "39 categorie",
+          "text": "Bandiere, capitali, sagome dei paesi, loghi, e molto altro."
+        },
+        {
+          "title": "Quattro livelli",
+          "text": "Progressivo, facile, medio e difficile per ogni categoria."
+        },
+        {
+          "title": "Sfida del giorno",
+          "text": "Una partita nuova ogni giorno, uguale per tutti."
+        },
+        {
+          "title": "Streak e gemme",
+          "text": "Gioca ogni giorno, accumula gemme e spendile nel negozio."
+        },
+        {
+          "title": "Funziona offline",
+          "text": "Si installa come app sul telefono e gira anche senza rete."
+        },
+        {
+          "title": "Zero attrito",
+          "text": "Nessun account: apri e giochi."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Serve registrarsi?",
+          "a": "No. Apri il gioco e inizi subito, senza account."
+        },
+        {
+          "q": "Funziona senza internet?",
+          "a": "Sì. Una volta aperto puoi installarlo sul telefono e giocare anche offline."
+        },
+        {
+          "q": "Su quali dispositivi gira?",
+          "a": "Su qualsiasi telefono, tablet o computer con un browser: Android, iPhone, Windows, Mac."
+        },
+        {
+          "q": "Quante domande ci sono?",
+          "a": "4.115 domande in 39 categorie, ognuna giocabile in quattro livelli di difficoltà."
+        }
       ]
     },
     {
       "id": "baratto-skill",
       "name": "Baratto Skill",
       "tagline": "Scambia quello che sai fare.",
+      "audience": "Per chi vuole imparare scambiando",
+      "cta": "Avvisami al lancio",
       "description": "Insegni chitarra, impari Excel. Ripari una bici, ti sistemano il sito. Baratto Skill mette in contatto persone che vogliono scambiarsi competenze, senza soldi di mezzo.",
       "category": "community",
       "status": "soon",
@@ -114,17 +238,35 @@
       },
       "icon": "assets/img/apps/baratto-skill/icon.svg",
       "screens": [],
-      "platforms": ["web"],
+      "platforms": [
+        "web"
+      ],
       "links": {},
       "stats": [
-        { "label": "Costo", "value": "0 €" },
-        { "label": "Stato", "value": "In sviluppo" }
+        {
+          "label": "Costo",
+          "value": "0 €"
+        },
+        {
+          "label": "Stato",
+          "value": "In sviluppo"
+        }
       ],
       "features": [
-        { "title": "Profilo competenze", "text": "Cosa sai fare e cosa vuoi imparare." },
-        { "title": "Proposte di scambio", "text": "Trovi chi cerca quello che offri tu." },
-        { "title": "Chat", "text": "Ci si mette d'accordo direttamente." }
-      ]
+        {
+          "title": "Profilo competenze",
+          "text": "Cosa sai fare e cosa vuoi imparare."
+        },
+        {
+          "title": "Proposte di scambio",
+          "text": "Trovi chi cerca quello che offri tu."
+        },
+        {
+          "title": "Chat",
+          "text": "Ci si mette d'accordo direttamente."
+        }
+      ],
+      "faq": []
     }
   ]
 }

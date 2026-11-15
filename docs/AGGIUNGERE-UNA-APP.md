@@ -61,6 +61,9 @@ Apri `data/apps.json` e aggiungi un oggetto nella lista `apps`:
 |---|---|---|
 | `id` | sì | Minuscolo con trattini. Diventa l'indirizzo `app.html?id=memory-match` |
 | `name`, `tagline`, `description` | sì | Usa gli stessi testi del sito ufficiale dell'app |
+| `audience` | no | A chi serve, in poche parole ("Per chi deve prendere la patente B"). Appare nella scelta rapida in alto |
+| `cta` | no | Testo del bottone principale ("Gioca gratis ora"). Il bottone apre l'app web; se non c'è, il download per il dispositivo del visitatore |
+| `faq` | no | Domande frequenti dell'app: lista di `{ "q": "...", "a": "..." }` |
 | `category` | sì | Una chiave di `categories` in cima al file. Per una nuova, aggiungila lì |
 | `status` | sì | `live`, `beta`, `soon`. Solo le `live` hanno la fascia grande in home |
 | `featured` | no | `false` per tenere un'app `live` solo nel catalogo |
