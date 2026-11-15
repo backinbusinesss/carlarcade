@@ -20,7 +20,24 @@
           "status": { "enum": ["live", "beta", "soon"] },
           "featured": { "type": "boolean" },
           "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
-          "icon": { "type": "string", "description": "Percorso di un SVG/PNG quadrato" },
+          "icon": { "type": "string", "description": "Icona ufficiale dell'app, quadrata (PNG 512x512 o SVG)" },
+          "cover": { "type": "string", "description": "Immagine anteprima 1200x630 (di solito l'og.png del sito dell'app)" },
+          "screens": {
+            "type": "array",
+            "description": "Screenshot verticali del telefono. Con 2 o più, la home mostra i telefoni; con 3 o più, la pagina app mostra la galleria.",
+            "items": { "type": "object", "required": ["src"], "properties": { "src": { "type": "string" }, "alt": { "type": "string" } } }
+          },
+          "brand": {
+            "type": "object",
+            "description": "Lo stile dell'app: colori e font usati nella sua fascia in home e nella sua pagina",
+            "properties": {
+              "bg": { "type": "string", "description": "Colore di sfondo scuro" },
+              "bg2": { "type": "string", "description": "Secondo colore del gradiente" },
+              "accent": { "type": "string", "description": "Colore del bottone principale e dei numeri" },
+              "highlight": { "type": "string", "description": "Colore della tagline" },
+              "font": { "type": "string", "description": "Font Google per il nome (va aggiunto anche al link dei font negli HTML)" }
+            }
+          },
           "platforms": { "type": "array", "items": { "enum": ["web", "android", "ios", "windows", "mac", "linux"] } },
           "links": {
             "type": "object",
@@ -35,7 +52,7 @@
             "additionalProperties": false
           },
           "stats": { "type": "array", "items": { "type": "object", "required": ["label", "value"], "properties": { "label": { "type": "string" }, "value": { "type": "string" } } } },
-          "features": { "type": "array", "items": { "type": "string" } }
+          "features": { "type": "array", "items": { "type": "object", "required": ["title"], "properties": { "title": { "type": "string" }, "text": { "type": "string" } } } }
         }
       }
     }

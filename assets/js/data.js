@@ -30,7 +30,7 @@ export function filterApps(apps, { filter = "all", query = "" } = {}) {
       filter === "all" || app.category === filter || app.status === filter;
     const passQuery =
       !q ||
-      [app.name, app.tagline, app.description, ...(app.features ?? [])]
+      [app.name, app.tagline, app.description, ...(app.features ?? []).map((f) => (typeof f === "string" ? f : `${f.title} ${f.text ?? ""}`))]
         .join(" ")
         .toLowerCase()
         .includes(q);

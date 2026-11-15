@@ -1,7 +1,11 @@
 # CarlArcade
 
 Il portale di giochi e app di **[Carlhost](https://carlhost.com)**, per **carlarcade.com**.
-Raccoglie in un unico posto tutte le app: **Indovina Tutto**, **PatenteQuest** (quiz patente), **Baratto Skill** e quelle che verranno.
+Raccoglie in un unico posto tutte le app, ognuna presentata col proprio stile e collegata al suo sito ufficiale:
+
+- **PatenteQuest**: quiz patente per gioco. [Sito](https://patentequest-acdf10.web.app/)
+- **Indovina Tutto**: il quiz su tutto. [Sito](https://backinbusinesss.github.io/indovina-tutto/)
+- **Baratto Skill**: in arrivo
 
 Sito statico: HTML, CSS e JavaScript puro. **Niente build, niente framework, niente database.**
 Per aggiungere un'app basta modificare un file JSON.
@@ -46,7 +50,7 @@ carlarcade/
 │   │   └── pages/          Uno script per pagina (home, app, static)
 │   └── img/
 │       ├── logo.svg
-│       └── apps/           Un'icona per app (<id>.svg)
+│       └── apps/<id>/      Icona, cover e screenshot ufficiali di ogni app
 │
 ├── scripts/validate-apps.mjs   Controllo automatico del catalogo
 ├── .github/workflows/deploy.yml  Valida e pubblica su GitHub Pages a ogni push su main

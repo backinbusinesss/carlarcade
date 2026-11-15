@@ -1,29 +1,30 @@
-// Configurazione globale del sito. Modifica qui nome, brand e link social.
+// Configurazione globale del sito. Modifica qui nome, brand e contatti.
 export const SITE = {
   name: "CarlArcade",
   domain: "carlarcade.com",
-  tagline: "Giochi e app fatte a mano.",
+  tagline: "Le app di Carlhost, in un unico posto.",
   parent: { name: "Carlhost", url: "https://carlhost.com" },
   contactEmail: "info@carlhost.com",
   dataUrl: "data/apps.json",
 };
 
-// Etichette leggibili per le piattaforme (usate su card e pagina app).
+// Etichette leggibili per le piattaforme.
 export const PLATFORM_LABELS = {
-  web: "Web",
+  web: "Browser",
   android: "Android",
-  ios: "iOS",
+  ios: "iPhone",
   windows: "Windows",
-  mac: "macOS",
+  mac: "Mac",
   linux: "Linux",
 };
 
-// Testo dei bottoni per ciascun tipo di link in apps.json -> links.
-export const LINK_LABELS = {
-  play: "Gioca ora",
-  site: "Sito ufficiale",
-  android: "Scarica per Android",
-  ios: "Scarica per iOS",
-  windows: "Scarica per Windows",
-  mac: "Scarica per macOS",
+// Come mostrare ciascun tipo di link in apps.json -> links.
+// "kind" decide lo stile: play = bottone principale, site = sito ufficiale, download = scaricabile.
+export const LINK_TYPES = {
+  play:    { label: "Apri l'app",          short: "Gioca nel browser", kind: "play",     note: "Nessuna installazione" },
+  site:    { label: "Sito ufficiale",      short: "Sito ufficiale",    kind: "site",     note: "Tutte le info sull'app" },
+  windows: { label: "Scarica per Windows", short: "Windows",           kind: "download", note: "Windows 10 e 11" },
+  android: { label: "Scarica per Android", short: "Android",           kind: "download", note: "File APK" },
+  ios:     { label: "Scarica per iPhone",  short: "iPhone",            kind: "download", note: "App Store" },
+  mac:     { label: "Scarica per Mac",     short: "Mac",               kind: "download", note: "macOS" },
 };

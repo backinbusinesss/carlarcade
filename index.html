@@ -3,85 +3,128 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CarlArcade — Giochi e app fatte a mano</title>
-  <meta name="description" content="CarlArcade raccoglie i giochi e le app di Carlhost: Indovina Tutto, PatenteQuest, Baratto Skill e altro in arrivo.">
-  <meta name="theme-color" content="#07070d">
+  <title>CarlArcade: le app di Carlhost, in un unico posto</title>
+  <meta name="description" content="CarlArcade raccoglie i giochi e le app di Carlhost: PatenteQuest, il quiz patente per gioco, Indovina Tutto, il quiz su tutto, e Baratto Skill in arrivo.">
+  <meta name="theme-color" content="#09090b">
   <link rel="canonical" href="https://carlarcade.com/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CarlArcade — Giochi e app fatte a mano">
-  <meta property="og:description" content="Quiz, giochi e strumenti utili, tutti in un unico posto. Un progetto Carlhost.">
+  <meta property="og:site_name" content="CarlArcade">
+  <meta property="og:title" content="CarlArcade: le app di Carlhost, in un unico posto">
+  <meta property="og:description" content="Quiz, giochi e strumenti utili. Progettati, sviluppati e ospitati da Carlhost.">
   <meta property="og:url" content="https://carlarcade.com/">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700;800&family=JetBrains+Mono:wght@500&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
   <script type="module" src="assets/js/pages/home.js"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"CarlArcade","url":"https://carlarcade.com/","logo":"https://carlarcade.com/assets/img/logo.svg","parentOrganization":{"@type":"Organization","name":"Carlhost","url":"https://carlhost.com"}}
+  </script>
 </head>
 <body>
-  <a class="skip-link" href="#giochi">Vai alle app</a>
+  <a class="skip-link" href="#app">Vai alle app</a>
   <div data-shell="header"></div>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
       <div class="container hero__inner">
-        <span class="hero__kicker">Inserisci gettone ▸ Premi start</span>
-        <h1>Giochi e app <span class="glow">fatte a mano.</span></h1>
-        <p>Quiz per sfidare gli amici, app per studiare la patente, strumenti per scambiarsi competenze. Tutto quello che creiamo, in un unico posto.</p>
+        <span class="pill" id="hero-pill"><span class="pill__tag">Nuovo</span><span>Le app di Carlhost</span></span>
+        <h1>Le app di Carlhost. <span class="muted">In un unico posto.</span></h1>
+        <p class="hero__lead">Quiz per mettersi alla prova, app per prendere la patente, strumenti per scambiarsi competenze. Gratis per iniziare, su ogni dispositivo.</p>
         <div class="hero__actions">
-          <a class="btn btn-primary" href="#giochi">Scegli un gioco</a>
-          <a class="btn btn-ghost" href="chi-siamo.html">Chi siamo</a>
+          <a class="btn btn-primary btn-lg" href="#app">Scopri le app</a>
+          <a class="btn btn-ghost btn-lg" href="#catalogo">Tutto il catalogo</a>
         </div>
-        <div class="hero__stats" aria-label="Numeri">
-          <div class="hero__stat"><strong id="stat-apps">–</strong><span>App</span></div>
-          <div class="hero__stat"><strong id="stat-live">–</strong><span>Disponibili</span></div>
-          <div class="hero__stat"><strong id="stat-soon">–</strong><span>In arrivo</span></div>
-        </div>
+        <nav class="dock" id="dock" aria-label="Le app"></nav>
       </div>
     </section>
 
-    <section class="section" id="giochi">
+    <!-- NUMERI -->
+    <section class="metrics" aria-label="CarlArcade in numeri">
+      <div class="container">
+        <div class="metric"><strong>11.000+</strong><span>domande nei quiz</span></div>
+        <div class="metric"><strong>5</strong><span>piattaforme supportate</span></div>
+        <div class="metric"><strong>0 €</strong><span>per iniziare a giocare</span></div>
+        <div class="metric"><strong>100%</strong><span>sviluppato in Italia</span></div>
+      </div>
+    </section>
+
+    <!-- SHOWCASE APP LIVE (ognuna col proprio brand) -->
+    <section class="section" id="app">
       <div class="container">
         <div class="section__head">
           <div>
-            <p class="section__eyebrow">Il catalogo</p>
-            <h2 class="section__title">Tutte le app</h2>
+            <p class="eyebrow">Disponibili ora</p>
+            <h2 class="section__title">Pronte da usare.</h2>
           </div>
-          <p class="section__lead">Ogni app è gratuita e non chiede registrazione per iniziare.</p>
+          <p class="section__lead">Ogni app ha la sua identità e il suo sito ufficiale. Qui le trovi tutte, con un clic per aprirle.</p>
         </div>
+        <div id="showcases"></div>
+      </div>
+    </section>
 
+    <!-- CATALOGO -->
+    <section class="section" id="catalogo" style="padding-top:0">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Catalogo</p>
+            <h2 class="section__title">Tutte le app.</h2>
+          </div>
+        </div>
         <div class="toolbar">
-          <div class="filters" id="filters" role="group" aria-label="Filtra le app"></div>
+          <div class="segmented" id="filters" role="group" aria-label="Filtra le app"></div>
           <label class="search">
             <span class="visually-hidden">Cerca un'app</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            <input id="search" type="search" placeholder="Cerca un'app…" autocomplete="off">
+            <input id="search" type="search" placeholder="Cerca un'app" autocomplete="off">
           </label>
         </div>
-
         <div class="app-grid" id="app-grid" aria-live="polite"></div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- STUDIO CARLHOST -->
+    <section class="section" style="padding-top:0">
       <div class="container">
         <div class="section__head">
           <div>
-            <p class="section__eyebrow">Come lavoriamo</p>
-            <h2 class="section__title">Piccolo studio, idee grandi.</h2>
+            <p class="eyebrow">Lo studio</p>
+            <h2 class="section__title">Fatte da Carlhost.<br>Dall'idea al server.</h2>
+          </div>
+          <p class="section__lead">Ogni app di CarlArcade è progettata, sviluppata e ospitata internamente. Nessun intermediario.</p>
+        </div>
+        <div class="studio">
+          <div class="studio__item reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>
+            <h3>Progettate con cura</h3>
+            <p>Interfacce chiare, pensate per il telefono, che si usano senza istruzioni.</p>
+          </div>
+          <div class="studio__item reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
+            <h3>Su ogni dispositivo</h3>
+            <p>Browser, Android, Windows, iPhone e Mac. Molte funzionano anche offline.</p>
+          </div>
+          <div class="studio__item reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>
+            <h3>Ospitate da Carlhost</h3>
+            <p>Infrastruttura veloce e affidabile, aggiornamenti continui senza pensieri.</p>
           </div>
         </div>
-        <div class="pillars">
-          <div class="pillar reveal"><span class="pillar__num">01</span><h3>Gratis per giocare</h3><p>Apri e giochi. Niente abbonamenti obbligatori, niente registrazioni per iniziare.</p></div>
-          <div class="pillar reveal"><span class="pillar__num">02</span><h3>Ovunque tu sia</h3><p>Web, Android, Windows. Molte app funzionano anche senza connessione.</p></div>
-          <div class="pillar reveal"><span class="pillar__num">03</span><h3>Sempre qualcosa di nuovo</h3><p>Il catalogo cresce: ogni nuova app arriva prima qui.</p></div>
-        </div>
+      </div>
+    </section>
 
-        <div class="cta-band reveal">
-          <h2>Hai un'idea per un gioco?</h2>
-          <p>Scrivici. Le idee migliori diventano la prossima app di CarlArcade.</p>
-          <a class="btn btn-primary" href="mailto:info@carlhost.com">Scrivici</a>
-        </div>
+    <!-- CTA -->
+    <section class="container">
+      <div class="cta reveal">
+        <p class="eyebrow">Collaboriamo</p>
+        <h2 style="margin-top:12px">Hai un'idea per un'app?</h2>
+        <p>Scrivici. Le idee migliori diventano la prossima app di CarlArcade.</p>
+        <a class="btn btn-primary btn-lg" href="mailto:info@carlhost.com">Scrivi a Carlhost</a>
       </div>
     </section>
   </main>

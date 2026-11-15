@@ -12,57 +12,88 @@
   },
   "apps": [
     {
-      "id": "indovina-tutto",
-      "name": "Indovina Tutto",
-      "tagline": "Il quiz su tutto. Davvero tutto.",
-      "description": "39 categorie e oltre 4.000 domande, da giocare in quattro livelli: progressivo, facile, medio e difficile. Streak, gemme, negozio e una sfida nuova ogni giorno. Si installa sul telefono e funziona anche offline.",
-      "category": "quiz",
-      "status": "live",
-      "featured": true,
-      "color": "#ff4d8d",
-      "icon": "assets/img/apps/indovina-tutto.svg",
-      "platforms": ["web", "android", "ios"],
-      "links": {
-        "play": "https://backinbusinesss.github.io/indovina-tutto/app/",
-        "site": "https://backinbusinesss.github.io/indovina-tutto/"
-      },
-      "stats": [
-        { "label": "Categorie", "value": "39" },
-        { "label": "Domande", "value": "4.115" },
-        { "label": "Livelli", "value": "4" }
-      ],
-      "features": [
-        "Sfida del giorno",
-        "Streak e gemme da collezionare",
-        "Funziona offline (PWA)",
-        "Nessuna registrazione"
-      ]
-    },
-    {
       "id": "patentequest",
       "name": "PatenteQuest",
-      "tagline": "Il quiz patente che sembra un gioco.",
-      "description": "Tutti i quiz ministeriali per la Patente B, gratis. Studia per argomento, fai simulazioni d'esame e tieni d'occhio i tuoi errori finché non li sbagli più.",
+      "tagline": "Prendi la patente. Giocando.",
+      "description": "Tutti i 7.106 quiz ministeriali della patente B (listato 2025), con arene, sfide contro altri giocatori, livelli e simulazioni d'esame vere. Ogni capitolo è un livello, ogni ripasso una sfida, ogni errore una spiegazione. Gratis e senza pubblicità.",
       "category": "studio",
       "status": "live",
       "featured": true,
-      "color": "#3dd6ff",
-      "icon": "assets/img/apps/patentequest.svg",
-      "platforms": ["windows", "android"],
+      "color": "#14b8a6",
+      "brand": {
+        "bg": "#0b2a2a",
+        "bg2": "#0f766e",
+        "accent": "#2dd4bf",
+        "highlight": "#fde68a",
+        "font": "Nunito"
+      },
+      "icon": "assets/img/apps/patentequest/icon.png",
+      "cover": "assets/img/apps/patentequest/cover.png",
+      "screens": [
+        { "src": "assets/img/apps/patentequest/home.webp", "alt": "Schermata home con preparazione all'esame e modalità di gioco" },
+        { "src": "assets/img/apps/patentequest/esame.webp", "alt": "Simulazione d'esame" },
+        { "src": "assets/img/apps/patentequest/arene.webp", "alt": "Le arene" },
+        { "src": "assets/img/apps/patentequest/sfide.webp", "alt": "Le sfide" }
+      ],
+      "platforms": ["windows", "android", "ios", "mac", "web"],
       "links": {
+        "site": "https://patentequest-acdf10.web.app/",
+        "play": "https://patentequest-acdf10.web.app/app/",
         "windows": "https://github.com/backinbusinesss/patentequest-download/releases/latest/download/PatenteQuest-Setup.exe",
         "android": "https://github.com/backinbusinesss/patentequest-download/releases/latest/download/PatenteQuest.apk"
       },
       "stats": [
-        { "label": "Patente", "value": "B" },
-        { "label": "Prezzo", "value": "0 €" },
-        { "label": "Quiz", "value": "Ministeriali" }
+        { "label": "Quiz ministeriali", "value": "7.106" },
+        { "label": "Capitoli d'esame", "value": "25" },
+        { "label": "Figure e segnali", "value": "409" },
+        { "label": "Medaglie", "value": "22" }
       ],
       "features": [
-        "Simulazione d'esame con timer",
-        "Ripasso degli errori",
-        "Studio per argomento",
-        "Gratis"
+        { "title": "Arena online", "text": "Sfida giocatori veri in tempo reale sulle stesse 10 domande." },
+        { "title": "Simulazione d'esame", "text": "30 domande, 20 minuti, massimo 3 errori. Come all'esame vero." },
+        { "title": "Ogni errore, spiegato", "text": "La versione corretta dal listato ufficiale e le regole collegate." },
+        { "title": "Ripasso intelligente", "text": "Le domande tornano proprio quando stai per dimenticarle." },
+        { "title": "Livelli e medaglie", "text": "XP, combo, giorni di fila e 22 medaglie da sbloccare." },
+        { "title": "Classifica mondiale", "text": "Account facoltativo, progressi salvati nel cloud." }
+      ]
+    },
+    {
+      "id": "indovina-tutto",
+      "name": "Indovina Tutto",
+      "tagline": "Quanto ne sai, davvero?",
+      "description": "Il quiz su tutto: bandiere, capitali, sagome, loghi e molto altro. 39 categorie e 4.115 domande, ognuna in quattro livelli: progressivo, facile, medio e difficile. Streak, gemme, negozio e una sfida nuova ogni giorno. Si installa sul telefono e funziona anche offline.",
+      "category": "quiz",
+      "status": "live",
+      "featured": true,
+      "color": "#7c5cff",
+      "brand": {
+        "bg": "#0b0f2a",
+        "bg2": "#2a1f6b",
+        "accent": "#9b82ff",
+        "highlight": "#ffc83d",
+        "font": "Inter"
+      },
+      "icon": "assets/img/apps/indovina-tutto/icon.png",
+      "cover": "assets/img/apps/indovina-tutto/cover.png",
+      "screens": [],
+      "platforms": ["web", "android", "ios"],
+      "links": {
+        "site": "https://backinbusinesss.github.io/indovina-tutto/",
+        "play": "https://backinbusinesss.github.io/indovina-tutto/app/"
+      },
+      "stats": [
+        { "label": "Categorie", "value": "39" },
+        { "label": "Domande", "value": "4.115" },
+        { "label": "Livelli per categoria", "value": "4" },
+        { "label": "Registrazione", "value": "No" }
+      ],
+      "features": [
+        { "title": "39 categorie", "text": "Bandiere, capitali, sagome dei paesi, loghi, e molto altro." },
+        { "title": "Quattro livelli", "text": "Progressivo, facile, medio e difficile per ogni categoria." },
+        { "title": "Sfida del giorno", "text": "Una partita nuova ogni giorno, uguale per tutti." },
+        { "title": "Streak e gemme", "text": "Gioca ogni giorno, accumula gemme e spendile nel negozio." },
+        { "title": "Funziona offline", "text": "Si installa come app sul telefono e gira anche senza rete." },
+        { "title": "Zero attrito", "text": "Nessun account: apri e giochi." }
       ]
     },
     {
@@ -72,9 +103,17 @@
       "description": "Insegni chitarra, impari Excel. Ripari una bici, ti sistemano il sito. Baratto Skill mette in contatto persone che vogliono scambiarsi competenze, senza soldi di mezzo.",
       "category": "community",
       "status": "soon",
-      "featured": true,
-      "color": "#b6ff3d",
-      "icon": "assets/img/apps/baratto-skill.svg",
+      "featured": false,
+      "color": "#34d399",
+      "brand": {
+        "bg": "#06261d",
+        "bg2": "#047857",
+        "accent": "#34d399",
+        "highlight": "#d1fae5",
+        "font": "Inter"
+      },
+      "icon": "assets/img/apps/baratto-skill/icon.svg",
+      "screens": [],
       "platforms": ["web"],
       "links": {},
       "stats": [
@@ -82,9 +121,9 @@
         { "label": "Stato", "value": "In sviluppo" }
       ],
       "features": [
-        "Profilo con le tue competenze",
-        "Proposte di scambio",
-        "Chat tra utenti"
+        { "title": "Profilo competenze", "text": "Cosa sai fare e cosa vuoi imparare." },
+        { "title": "Proposte di scambio", "text": "Trovi chi cerca quello che offri tu." },
+        { "title": "Chat", "text": "Ci si mette d'accordo direttamente." }
       ]
     }
   ]

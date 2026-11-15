@@ -39,6 +39,12 @@ for (const [i, app] of (data.apps ?? []).entries()) {
     if (!LINK_TYPES.includes(type)) errors.push(`${at}: tipo di link sconosciuto "${type}"`);
     if (!/^https:\/\//.test(url)) errors.push(`${at}: il link "${type}" deve iniziare con https://`);
   }
+  if (app.cover && !existsSync(join(root, app.cover))) errors.push(`${at}: cover non trovata: ${app.cover}`);
+  for (const s of app.screens ?? []) if (!s.src || !existsSync(join(root, s.src))) errors.push(`${at}: screenshot non trovato: ${s.src}`);
+  for (const [k, v] of Object.entries(app.brand ?? {})) {
+    if (k !== "font" && !/^#[0-9a-fA-F]{6}$/.test(v)) errors.push(`${at}: brand.${k} deve essere tipo #0b0f2a`);
+  }
+  for (const f of app.features ?? []) if (typeof f !== "string" && !f?.title) errors.push(`${at}: ogni feature deve avere "title"`);
   if (app.status === "live" && !Object.keys(app.links ?? {}).length) errors.push(`${at}: un'app "live" deve avere almeno un link`);
 }
 
