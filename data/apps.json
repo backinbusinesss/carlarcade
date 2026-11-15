@@ -221,52 +221,108 @@
     {
       "id": "baratto-skill",
       "name": "Baratto Skill",
-      "tagline": "Scambia quello che sai fare.",
+      "tagline": "Io ti insegno, tu mi insegni.",
       "audience": "Per chi vuole imparare scambiando",
-      "cta": "Avvisami al lancio",
-      "description": "Insegni chitarra, impari Excel. Ripari una bici, ti sistemano il sito. Baratto Skill mette in contatto persone che vogliono scambiarsi competenze, senza soldi di mezzo.",
+      "cta": "Prova l'anteprima",
+      "description": "Scambia competenze con le persone della tua zona: un'ora di inglese in cambio di un'ora di aiuto con il PC, una lezione di chitarra per una mensola montata. Niente soldi: le ore finiscono in una banca del tempo, dove un'ora vale un'ora. Ora in anteprima: profili e scambi sono dimostrativi e restano nel tuo browser.",
       "category": "community",
-      "status": "soon",
-      "featured": false,
-      "color": "#34d399",
+      "status": "beta",
+      "featured": true,
+      "color": "#2742d9",
       "brand": {
-        "bg": "#06261d",
-        "bg2": "#047857",
-        "accent": "#34d399",
-        "highlight": "#d1fae5",
-        "font": "Inter"
+        "bg": "#0d1124",
+        "bg2": "#2742d9",
+        "accent": "#ffd43b",
+        "highlight": "#c7d0ff",
+        "font": "Archivo"
       },
-      "icon": "assets/img/apps/baratto-skill/icon.svg",
-      "screens": [],
-      "platforms": [
-        "web"
-      ],
-      "links": {},
-      "stats": [
+      "icon": "assets/img/apps/baratto-skill/icon.png",
+      "cover": "assets/img/apps/baratto-skill/cover.png",
+      "screens": [
         {
-          "label": "Costo",
-          "value": "0 €"
+          "src": "assets/img/apps/baratto-skill/bacheca.jpg",
+          "alt": "Bacheca con scambi perfetti, appuntamenti e proposte"
         },
         {
-          "label": "Stato",
-          "value": "In sviluppo"
+          "src": "assets/img/apps/baratto-skill/vicini.jpg",
+          "alt": "Persone vicino a te con le competenze da scambiare"
+        },
+        {
+          "src": "assets/img/apps/baratto-skill/ore.jpg",
+          "alt": "Banca del tempo con il saldo delle ore"
+        }
+      ],
+      "platforms": [
+        "web",
+        "android",
+        "ios"
+      ],
+      "links": {
+        "play": "https://backinbusinesss.github.io/baratto-skill/app/",
+        "site": "https://backinbusinesss.github.io/baratto-skill/"
+      },
+      "stats": [
+        {
+          "label": "Competenze",
+          "value": "420"
+        },
+        {
+          "label": "Categorie",
+          "value": "14"
+        },
+        {
+          "label": "Comuni italiani",
+          "value": "296"
+        },
+        {
+          "label": "Un'ora vale",
+          "value": "1 ora"
         }
       ],
       "features": [
         {
-          "title": "Profilo competenze",
-          "text": "Cosa sai fare e cosa vuoi imparare."
+          "title": "Scambi perfetti",
+          "text": "Insegni quello che l'altro cerca, impari quello che offre."
         },
         {
-          "title": "Proposte di scambio",
-          "text": "Trovi chi cerca quello che offri tu."
+          "title": "Banca del tempo",
+          "text": "Un'ora insegnata vale un'ora ricevuta, qualunque cosa insegni."
         },
         {
-          "title": "Chat",
-          "text": "Ci si mette d'accordo direttamente."
+          "title": "Persone vicino a te",
+          "text": "Elenco o mappa, raggio, filtri per categoria e modalità."
+        },
+        {
+          "title": "Scambi a tre",
+          "text": "Quando lo scambio diretto non c'è, l'app trova il giro a tre."
+        },
+        {
+          "title": "Agenda e chat",
+          "text": "Proposte, orari, promemoria ed esportazione nel calendario."
+        },
+        {
+          "title": "Dal vivo o online",
+          "text": "Incontri nel quartiere o lezioni in videochiamata."
         }
       ],
-      "faq": []
+      "faq": [
+        {
+          "q": "Baratto Skill è già attivo?",
+          "a": "È in anteprima: puoi provare tutta l'app, ma profili, chat e scambi sono dimostrativi e restano nel tuo browser. Nessun dato lascia il dispositivo."
+        },
+        {
+          "q": "Si paga?",
+          "a": "No: gli scambi si fanno in ore, non in euro. Il piano gratuito basta per iniziare; il piano Premium aggiunge funzioni extra."
+        },
+        {
+          "q": "Come funziona la banca del tempo?",
+          "a": "Parti con 2 ore di benvenuto. Ogni ora che insegni vale +1, ogni ora che ricevi -1. Puoi andare in rosso fino a -3 ore."
+        },
+        {
+          "q": "Su quali dispositivi funziona?",
+          "a": "Su qualsiasi telefono o computer con un browser. Puoi installarla come app sulla schermata Home."
+        }
+      ]
     }
   ]
 }

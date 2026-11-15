@@ -5,7 +5,7 @@ Raccoglie in un unico posto tutte le app, ognuna presentata col proprio stile e 
 
 - **PatenteQuest**: quiz patente per gioco. [Sito](https://patentequest-acdf10.web.app/)
 - **Indovina Tutto**: il quiz su tutto. [Sito](https://backinbusinesss.github.io/indovina-tutto/)
-- **Baratto Skill**: in arrivo
+- **Baratto Skill**: scambio di competenze, in anteprima. [Sito](https://backinbusinesss.github.io/baratto-skill/)
 
 Sito statico: HTML, CSS e JavaScript puro. **Niente build, niente framework, niente database.**
 Per aggiungere un'app basta modificare un file JSON.

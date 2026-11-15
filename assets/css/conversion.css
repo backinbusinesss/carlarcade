@@ -129,3 +129,8 @@
 .showcase__grid > *, .hero__grid > *, .app-hero__grid > * { min-width: 0; }
 @media (max-width: 900px) { .showcase__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .showcase__name { overflow-wrap: anywhere; }
+
+/* Barra fissa home: icone delle app */
+.sticky-cta__apps { display: flex; gap: 8px; }
+.sticky-cta__app-btn img { width: 40px; height: 40px; border-radius: 11px; box-shadow: 0 0 0 1px rgba(255,255,255,.12); transition: transform .2s var(--ease); }
+.sticky-cta__app-btn:active img { transform: scale(.94); }
