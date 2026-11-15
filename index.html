@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CarlArcade — Giochi e app fatte a mano</title>
+  <meta name="description" content="CarlArcade raccoglie i giochi e le app di Carlhost: Indovina Tutto, PatenteQuest, Baratto Skill e altro in arrivo.">
+  <meta name="theme-color" content="#07070d">
+  <link rel="canonical" href="https://carlarcade.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CarlArcade — Giochi e app fatte a mano">
+  <meta property="og:description" content="Quiz, giochi e strumenti utili, tutti in un unico posto. Un progetto Carlhost.">
+  <meta property="og:url" content="https://carlarcade.com/">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script type="module" src="assets/js/pages/home.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#giochi">Vai alle app</a>
+  <div data-shell="header"></div>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__inner">
+        <span class="hero__kicker">Inserisci gettone ▸ Premi start</span>
+        <h1>Giochi e app <span class="glow">fatte a mano.</span></h1>
+        <p>Quiz per sfidare gli amici, app per studiare la patente, strumenti per scambiarsi competenze. Tutto quello che creiamo, in un unico posto.</p>
+        <div class="hero__actions">
+          <a class="btn btn-primary" href="#giochi">Scegli un gioco</a>
+          <a class="btn btn-ghost" href="chi-siamo.html">Chi siamo</a>
+        </div>
+        <div class="hero__stats" aria-label="Numeri">
+          <div class="hero__stat"><strong id="stat-apps">–</strong><span>App</span></div>
+          <div class="hero__stat"><strong id="stat-live">–</strong><span>Disponibili</span></div>
+          <div class="hero__stat"><strong id="stat-soon">–</strong><span>In arrivo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="giochi">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="section__eyebrow">Il catalogo</p>
+            <h2 class="section__title">Tutte le app</h2>
+          </div>
+          <p class="section__lead">Ogni app è gratuita e non chiede registrazione per iniziare.</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="filters" id="filters" role="group" aria-label="Filtra le app"></div>
+          <label class="search">
+            <span class="visually-hidden">Cerca un'app</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="search" type="search" placeholder="Cerca un'app…" autocomplete="off">
+          </label>
+        </div>
+
+        <div class="app-grid" id="app-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="section__eyebrow">Come lavoriamo</p>
+            <h2 class="section__title">Piccolo studio, idee grandi.</h2>
+          </div>
+        </div>
+        <div class="pillars">
+          <div class="pillar reveal"><span class="pillar__num">01</span><h3>Gratis per giocare</h3><p>Apri e giochi. Niente abbonamenti obbligatori, niente registrazioni per iniziare.</p></div>
+          <div class="pillar reveal"><span class="pillar__num">02</span><h3>Ovunque tu sia</h3><p>Web, Android, Windows. Molte app funzionano anche senza connessione.</p></div>
+          <div class="pillar reveal"><span class="pillar__num">03</span><h3>Sempre qualcosa di nuovo</h3><p>Il catalogo cresce: ogni nuova app arriva prima qui.</p></div>
+        </div>
+
+        <div class="cta-band reveal">
+          <h2>Hai un'idea per un gioco?</h2>
+          <p>Scrivici. Le idee migliori diventano la prossima app di CarlArcade.</p>
+          <a class="btn btn-primary" href="mailto:info@carlhost.com">Scrivici</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-shell="footer"></div>
+</body>
+</html>

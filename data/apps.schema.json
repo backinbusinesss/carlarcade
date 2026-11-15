@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Catalogo app CarlArcade",
+  "type": "object",
+  "required": ["categories", "statuses", "apps"],
+  "properties": {
+    "categories": { "type": "object", "additionalProperties": { "type": "string" } },
+    "statuses": { "type": "object", "additionalProperties": { "type": "string" } },
+    "apps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "tagline", "description", "category", "status", "color", "icon", "platforms", "links"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Slug univoco, usato nell'URL: app.html?id=..." },
+          "name": { "type": "string" },
+          "tagline": { "type": "string", "description": "Una frase breve, mostrata sulla card" },
+          "description": { "type": "string" },
+          "category": { "type": "string", "description": "Una chiave di 'categories'" },
+          "status": { "enum": ["live", "beta", "soon"] },
+          "featured": { "type": "boolean" },
+          "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+          "icon": { "type": "string", "description": "Percorso di un SVG/PNG quadrato" },
+          "platforms": { "type": "array", "items": { "enum": ["web", "android", "ios", "windows", "mac", "linux"] } },
+          "links": {
+            "type": "object",
+            "properties": {
+              "play": { "type": "string", "format": "uri" },
+              "site": { "type": "string", "format": "uri" },
+              "android": { "type": "string", "format": "uri" },
+              "ios": { "type": "string", "format": "uri" },
+              "windows": { "type": "string", "format": "uri" },
+              "mac": { "type": "string", "format": "uri" }
+            },
+            "additionalProperties": false
+          },
+          "stats": { "type": "array", "items": { "type": "object", "required": ["label", "value"], "properties": { "label": { "type": "string" }, "value": { "type": "string" } } } },
+          "features": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

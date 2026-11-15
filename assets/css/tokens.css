@@ -1,0 +1,42 @@
+/* Design tokens — cambia qui colori, font e spaziature per tutto il sito. */
+:root {
+  /* Superfici */
+  --bg: #07070d;
+  --bg-elev: #10101a;
+  --bg-card: #13131f;
+  --line: #24243a;
+  --line-strong: #34345a;
+
+  /* Testo */
+  --text: #f2f2fa;
+  --text-muted: #9a9ab8;
+  --text-dim: #6a6a88;
+
+  /* Brand */
+  --brand: #ffcc00;          /* giallo "gettone" */
+  --brand-ink: #1a1400;
+  --accent-1: #ff4d8d;
+  --accent-2: #3dd6ff;
+  --accent-3: #b6ff3d;
+
+  /* Stati */
+  --status-live: #3dff9a;
+  --status-beta: #ffcc00;
+  --status-soon: #9a9ab8;
+
+  /* Tipografia */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Misure */
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 22px;
+  --container: 1180px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --header-h: 68px;
+
+  --shadow-card: 0 1px 0 rgba(255,255,255,.04) inset, 0 20px 40px -20px rgba(0,0,0,.6);
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
