@@ -3,7 +3,8 @@
   "categories": {
     "quiz": "Quiz",
     "studio": "Studio",
-    "community": "Community"
+    "community": "Community",
+    "cucina": "Cucina"
   },
   "statuses": {
     "live": "Disponibile",
@@ -321,6 +322,95 @@
         {
           "q": "Su quali dispositivi funziona?",
           "a": "Su qualsiasi telefono o computer con un browser. Puoi installarla come app sulla schermata Home."
+        }
+      ]
+    },
+    {
+      "id": "svuotafrigo",
+      "name": "SvuotaFrigo",
+      "tagline": "Quello che hai in frigo diventa cena.",
+      "audience": "Per chi non vuole più buttare cibo",
+      "cta": "Apri l'app gratis",
+      "description": "Segna cosa c'è in casa e scopri cosa cucinare, partendo da quello che sta per scadere. 85 ricette italiane, modalità cucina passo passo con timer, lista della spesa per corsia e il conto di quanti euro e chili di cibo hai salvato. Gratis, senza registrazione, funziona anche offline.",
+      "category": "cucina",
+      "status": "beta",
+      "featured": true,
+      "color": "#e8442e",
+      "brand": {
+        "bg": "#2b1209",
+        "bg2": "#e8442e",
+        "accent": "#ffc94a",
+        "highlight": "#ffd166",
+        "font": "Bricolage Grotesque"
+      },
+      "icon": "assets/img/apps/svuotafrigo/icon.png",
+      "cover": "assets/img/apps/svuotafrigo/cover.png",
+      "screens": [],
+      "platforms": [
+        "web",
+        "android",
+        "ios"
+      ],
+      "links": {
+        "play": "https://backinbusinesss.github.io/svuotafrigo/app/",
+        "site": "https://backinbusinesss.github.io/svuotafrigo/"
+      },
+      "stats": [
+        {
+          "label": "Ricette",
+          "value": "85"
+        },
+        {
+          "label": "Ingredienti",
+          "value": "115"
+        },
+        {
+          "label": "Registrazione",
+          "value": "No"
+        },
+        {
+          "label": "Offline",
+          "value": "Sì"
+        }
+      ],
+      "features": [
+        {
+          "title": "Sai cosa scade",
+          "text": "Ogni ingrediente ha la sua scadenza stimata: in cima c'è cosa usare per primo."
+        },
+        {
+          "title": "Ricette salva-spreco",
+          "text": "Le ricette che usano ciò che scade salgono in cima, con cosa hai e cosa manca."
+        },
+        {
+          "title": "Cucina passo passo",
+          "text": "Schermo intero, timer con avviso, schermo sempre acceso."
+        },
+        {
+          "title": "Spesa per corsia",
+          "text": "I mancanti in lista con un tocco, ordinati come al supermercato."
+        },
+        {
+          "title": "Piano della settimana",
+          "text": "Sette cene che usano prima ciò che scade (Premium)."
+        },
+        {
+          "title": "Traguardi",
+          "text": "Euro e chili salvati, giorni di fila, 9 traguardi da sbloccare."
+        }
+      ],
+      "faq": [
+        {
+          "q": "SvuotaFrigo è gratis?",
+          "a": "Sì: frigo, 63 ricette, modalità cucina e lista della spesa sono gratis. Premium e i pacchetti di ricette aggiungono funzioni extra."
+        },
+        {
+          "q": "Serve registrarsi?",
+          "a": "No. I dati restano sul tuo dispositivo."
+        },
+        {
+          "q": "Funziona su iPhone?",
+          "a": "Sì, dal browser. Puoi aggiungerla alla schermata Home e usarla anche offline."
         }
       ]
     }
