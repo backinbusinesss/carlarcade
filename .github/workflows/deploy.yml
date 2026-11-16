@@ -37,7 +37,7 @@ jobs:
       - name: Prepara la cartella del sito
         run: |
           mkdir _site
-          cp -r index.html app.html chi-siamo.html 404.html CNAME .nojekyll robots.txt sitemap.xml assets data _site/
+          cp -r *.html CNAME .nojekyll robots.txt sitemap.xml assets data _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
