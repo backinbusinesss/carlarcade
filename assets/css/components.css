@@ -132,3 +132,14 @@
 .footer-bottom { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--text-3); }
 .carlhost-mark strong { color: var(--text); font-weight: 600; }
 @media (max-width: 860px) { .site-footer .container { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
+
+/* Note legali: link nel footer e pagine privacy, cookie, termini */
+.footer-legal { display: flex; flex-wrap: wrap; gap: 16px; }
+.footer-legal a { color: var(--text-3); }
+.footer-legal a:hover { color: var(--text); }
+.legal__updated { font-size: 14px; color: var(--text-3); }
+.legal__nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 32px; }
+.prose .legal__nav a:not(.btn) { padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; font-size: 14px; color: var(--text-2); text-decoration: none; }
+.prose .legal__nav a[aria-current="page"]:not(.btn) { background: var(--text); color: var(--bg); border-color: var(--text); }
+.legal ul { padding-left: 1.2em; }
+.legal li { margin: 6px 0; }

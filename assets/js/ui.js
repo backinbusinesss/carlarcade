@@ -153,7 +153,8 @@ export function renderFooter(apps = []) {
         <li><a href="${SITE.parent.url}" target="_blank" rel="noopener">${SITE.parent.name}</a></li>
       </ul></div>
       <div class="footer-bottom">
-        <span>© ${new Date().getFullYear()} ${SITE.name} · ${SITE.domain}</span>
+        <span>© ${new Date().getFullYear()} CarlHost di Ulivi Nicolò · P.IVA IT14943820960</span>
+        <nav class="footer-legal" aria-label="Note legali"><a href="privacy.html">Privacy</a><a href="cookie.html">Cookie</a><a href="termini.html">Termini d'uso</a></nav>
         <a class="carlhost-mark" href="${SITE.parent.url}" target="_blank" rel="noopener">Un progetto <strong>${SITE.parent.name}</strong></a>
       </div>
     </div>
