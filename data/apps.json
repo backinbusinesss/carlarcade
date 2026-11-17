@@ -4,7 +4,8 @@
     "quiz": "Quiz",
     "studio": "Studio",
     "community": "Community",
-    "cucina": "Cucina"
+    "cucina": "Cucina",
+    "risparmio": "Risparmio"
   },
   "statuses": {
     "live": "Disponibile",
@@ -331,7 +332,7 @@
       "tagline": "Quello che hai in frigo diventa cena.",
       "audience": "Per chi non vuole più buttare cibo",
       "cta": "Apri l'app gratis",
-      "description": "Segna cosa c'è in casa e scopri cosa cucinare, partendo da quello che sta per scadere. 85 ricette italiane, modalità cucina passo passo con timer, lista della spesa per corsia e il conto di quanti euro e chili di cibo hai salvato. Gratis, senza registrazione, funziona anche offline.",
+      "description": "Segna cosa c'è in casa e scopri cosa cucinare, partendo da quello che sta per scadere. 2.000 ricette italiane (500 gratis), modalità cucina passo passo con timer, lista della spesa per corsia e il conto di quanti euro e chili di cibo hai salvato. Gratis, senza registrazione, funziona anche offline.",
       "category": "cucina",
       "status": "beta",
       "featured": true,
@@ -358,7 +359,7 @@
       "stats": [
         {
           "label": "Ricette",
-          "value": "85"
+          "value": "2.000"
         },
         {
           "label": "Ingredienti",
@@ -402,7 +403,7 @@
       "faq": [
         {
           "q": "SvuotaFrigo è gratis?",
-          "a": "Sì: frigo, 63 ricette, modalità cucina e lista della spesa sono gratis. Premium e i pacchetti di ricette aggiungono funzioni extra."
+          "a": "Sì: frigo, 500 ricette, modalità cucina e lista della spesa sono gratis. Premium e i pacchetti di ricette aggiungono funzioni extra."
         },
         {
           "q": "Serve registrarsi?",
@@ -411,6 +412,95 @@
         {
           "q": "Funziona su iPhone?",
           "a": "Sì, dal browser. Puoi aggiungerla alla schermata Home e usarla anche offline."
+        }
+      ]
+    },
+    {
+      "id": "disdici",
+      "name": "Disdici",
+      "tagline": "Tutti i tuoi abbonamenti, sotto controllo.",
+      "audience": "Per chi paga abbonamenti che non usa più",
+      "cta": "Fai il conto gratis",
+      "description": "Netflix, palestra, telefono, cloud, app dimenticate: mettili in fila e scopri quanto spendi davvero al mese e all'anno. Avvisi prima dei rinnovi e della fine delle prove gratuite, costo per ogni utilizzo, guide alla disdetta e lettera pronta per PEC o raccomandata. Gratis, senza registrazione, i dati restano sul telefono.",
+      "category": "risparmio",
+      "status": "beta",
+      "featured": false,
+      "color": "#ff4f2e",
+      "brand": {
+        "bg": "#14161a",
+        "bg2": "#ff4f2e",
+        "accent": "#ffc94a",
+        "highlight": "#ffe3da",
+        "font": "Bricolage Grotesque"
+      },
+      "icon": "assets/img/apps/disdici/icon.png",
+      "cover": "assets/img/apps/disdici/cover.png",
+      "screens": [],
+      "platforms": [
+        "web",
+        "android",
+        "ios"
+      ],
+      "links": {
+        "play": "https://backinbusinesss.github.io/disdici/app/",
+        "site": "https://backinbusinesss.github.io/disdici/"
+      },
+      "stats": [
+        {
+          "label": "Servizi in catalogo",
+          "value": "170"
+        },
+        {
+          "label": "Registrazione",
+          "value": "No"
+        },
+        {
+          "label": "Banca collegata",
+          "value": "No"
+        },
+        {
+          "label": "Gratis fino a",
+          "value": "5"
+        }
+      ],
+      "features": [
+        {
+          "title": "Quanto spendi, davvero",
+          "text": "Totale del mese e dell'anno, diviso per categoria, anche per gli abbonamenti annuali."
+        },
+        {
+          "title": "Mai più rinnovi a sorpresa",
+          "text": "Avvisi prima dei rinnovi e della fine delle prove gratuite, anche nel calendario."
+        },
+        {
+          "title": "Cosa tagliare",
+          "text": "Segna quanto usi ogni servizio: vedi il costo per utilizzo e cosa non vale la spesa."
+        },
+        {
+          "title": "Disdetta guidata",
+          "text": "Link diretti per i servizi online, lettera per PEC o raccomandata per i contratti (Premium)."
+        },
+        {
+          "title": "Dall'estratto conto",
+          "text": "Carica il CSV della banca e trova gli addebiti ricorrenti, letto solo sul telefono (Premium)."
+        },
+        {
+          "title": "Risparmi",
+          "text": "Ogni disdetta si somma: vedi quanto hai già risparmiato."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Disdici è gratis?",
+          "a": "Sì, fino a 5 abbonamenti con avvisi, guide e calcoli. Premium (1,99 €/mese o 14,99 €/anno) aggiunge abbonamenti illimitati, import dall'estratto conto, lettere di disdetta e famiglia."
+        },
+        {
+          "q": "Devo collegare il conto in banca?",
+          "a": "No. Se vuoi carichi tu il CSV dei movimenti: viene letto solo sul tuo telefono."
+        },
+        {
+          "q": "Disdice al posto mio?",
+          "a": "No: ti porta alla pagina giusta e prepara la lettera. L'invio resta tuo, così sei sicuro che sia fatto."
         }
       ]
     }
